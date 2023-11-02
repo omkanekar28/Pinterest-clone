@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+    
+{% block title %}Account | {% endblock title %}
+
+{% block body %}
+    <div class="container">
+        <h2> {{user.username}}'s Account details</h2>
+        <img src="/static/{{ user.profile_image }}" height="200" width="200">
+        <br>
+        <p style="font-size: 22px;">user id: {{user.id}}<br>
+        username: {{user.username}}<br>
+        email: {{user.email}}</p>
+        <br>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+            <h3>{{message}}</h3>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}    
+
+        <h4>Update your profile details here</h4>
+        <form method="POST" enctype="multipart/form-data">
+            {{form.hidden_tag()}}
+            {{form.profile_pic.label}}
+            <br>
+            {{form.profile_pic()}}
+            <br><br>
+            {{form.username.label}} {{form.username()}}
+            <br>
+            {{form.submit()}}
+        </form>
+    </div>
+{% endblock body %}
+    

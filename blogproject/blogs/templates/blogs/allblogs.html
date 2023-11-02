@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+    
+{% block title %}Blogs | {% endblock title %}
+
+{% block body %}
+
+
+<!-- {% if authors %}
+<div style="float:left">
+    <h2 style="margin-left: 35px;
+               margin-top: 10px;">Authors:</h2>
+<ul>
+{% for author in authors %}
+    <a href="#"><h4>{{author}}</h4></a>
+{% endfor %}
+</ul>
+</div>
+{% endif %}
+     -->
+    
+    <div class="container">
+        <a href="{{ url_for('blogs.add') }}"><button style="float:right;
+            margin-top: 200px;
+            margin-left: 50px;
+            margin-bottom: 50px;
+            padding: 50px;
+            background-color: rgb(80, 80, 80);
+            border: 5px solid rgb(29, 29, 29);
+            font-size: 22px;
+            color: skyblue">Upload Blog</button></a>
+        
+        {% if blogs %}
+        <h1>Blogs</h1>
+        <br>
+        {% for blog in blogs %}
+        <h2>{{ blog.title }}</h2>
+        <br>
+        <img src="/static/{{ blog.image }}" height="300" width="500">
+        <br>
+        <h4>Author: {{authors[loop.index0]}}</h4>
+        <h4>Upload date: {{ blog.uploaded_on }}</h4>
+        <h4>{{ blog.description[:500] }}...</h4>
+        <br><br>
+        {% endfor %}
+            
+        {% else %}
+        <h2>No blogs available</h2>
+
+        {% endif %}
+            
+    </div>
+{% endblock body %}
+    

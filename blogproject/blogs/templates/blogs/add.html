@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+    
+{% block title %}Blogs | {% endblock title %}
+
+{% block body %}
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            {{form.hidden_tag()}}
+            {{form.image()}}
+            <br><br>
+            {{form.title.label}} {{form.title}}
+            <br>
+            {{form.description.label}} {{form.description}}
+            <br>
+            {{form.submit()}}
+        </form>
+            
+    </div>
+{% endblock body %}
+    

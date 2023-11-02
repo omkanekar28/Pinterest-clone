@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+    
+
+{% block body %}
+    <div class="container">
+        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+            <h3>{{message}}</h3>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+            
+        <p style="text-shadow: 5px 5px 5px red;
+                  margin: auto;
+                  width: 60%;
+                  font-size: 128px;
+                  color: black;">Cloneterest</p>
+        <br>
+        <a href="{{url_for('users.logout')}}"><button style="color: white;
+                                                             background-color: blue;
+                                                             padding: 5px;">Logout</button></a>
+    </div>
+{% endblock body %}
+    
